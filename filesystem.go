@@ -2,10 +2,10 @@
 package filesystem
 
 import (
+	"errors"
 	"io"
 	"os"
 
-	"github.com/pkg/errors"
 	"schneider.vip/hybridbuffer/storage"
 )
 
