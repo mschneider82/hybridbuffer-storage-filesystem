@@ -12,7 +12,10 @@ This package provides a file system storage backend for HybridBuffer that stores
 ## Usage
 
 ```go
-import "schneider.vip/hybridbuffer/storage/filesystem"
+import (
+    "schneider.vip/hybridbuffer"
+    "schneider.vip/hybridbuffer/storage/filesystem"
+)
 
 // Basic usage with defaults
 storage := filesystem.New()
@@ -25,8 +28,9 @@ storage := filesystem.New(
 
 // Use with HybridBuffer
 buf := hybridbuffer.New(
-    hybridbuffer.WithStorage(storage),
+    hybridbuffer.WithStorage(func() storage.Backend { return storage }),
 )
+defer buf.Close()
 ```
 
 ## Configuration Options
